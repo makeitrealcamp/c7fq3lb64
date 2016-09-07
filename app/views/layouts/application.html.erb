@@ -25,9 +25,27 @@
         <ul class="nav navbar-nav">
           <li class="active"><a href="#">Gastos <span class="sr-only">(current)</span></a></li>
         </ul>
+        <% if user_signed_in? %>
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <%= link_to destroy_user_session_path, method: :delete do %>
+              <span class="glyphicon glyphicon-log-out"></span> Sign Up</a>
+            <% end %>
+            </li>
+          </ul>
+        <% end %>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
+
+
+  <% if notice %>
+    <div class="alert alert-success"><%= notice %></div>
+  <% end %>
+  <% if alert %>
+    <div class="alert alert-danger"><%= alert %></div>
+  <% end %>
+
 
 <%= yield %>
 
