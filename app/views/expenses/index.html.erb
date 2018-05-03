@@ -6,7 +6,8 @@
           <%= text_field_tag :concept, params[:concept], class: "form-control", placeholder: "Concepto" %>
         </div>
         <div class="form-group">
-          <%= select_tag :category_id, options_from_collection_for_select(Category.all, "id", "name", params[:category_id]), prompt: "Categoría", class: "form-control" %>
+
+          <%= select_tag :category_id, options_from_collection_for_select(Category.all, "id", "name", params[:category_i]), prompt: "Categoría", class: "form-control" %>
         </div>
         <%= submit_tag "Buscar", name: nil, class: "btn btn-primary btn-md" %>
       <% end %>

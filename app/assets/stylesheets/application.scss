@@ -30,3 +30,9 @@ $navbar-inverse-link-active-bg:            $body-bg;
 @import "expenses";
 
 .navbar-inverse { border: 0; }
+
+.navbar-nav > li > a.avatar {
+  padding-top: 7px;
+  padding-bottom: 7px;
+  img { width: 37px; }
+}
