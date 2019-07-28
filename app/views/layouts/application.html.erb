@@ -18,18 +18,45 @@
           <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="#">mis<strong>finanzas</strong></a>
+        <a class="navbar-brand" href="#">Gastos</a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Gastos <span class="sr-only">(current)</span></a></li>
+        <ul class="nav navbar-nav navbar-right">
+          <!-- links for devise use -->
+          <li class="active">
+            <%= link_to  "Registrarse", new_user_registration_path %>
+          </li>
+         <li>
+           <% if user_signed_in? %>
+            <%= link_to  "Salir",  destroy_user_session_path, method: :delete %>            
+           <% else %>
+            <%= link_to  "Ingresar", new_user_session_path %>          
+           <% end %>
+         </li>
+           <!-- /. links for devise use -->
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
 
+  <!-- Flash error messages for devise -->
+
+  <% flash.each do |key, value| %>
+  <div class="alerta">
+    <div class="<%= flash_class(key) %>">
+      <%= value %>
+    </div>
+    <% end %>
+  </div>
+
 <%= yield %>
+
+<script>
+    $(".alert").fadeIn(200).css("opacity", "0.85").delay(2000).slideUp(1000);
+    $(".alerta").on('click', '.alert', function () { $(this).remove() })
+</script>  
 
 </body>
 </html>
